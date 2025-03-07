@@ -1,8 +1,17 @@
 import React from 'react'
+import Navigation from './customer/components/navigation/Navigation'
+import Homepag from './customer/pages/homepage/Homepag'
 
 const App = () => {
   return (
-    <div > App</div>
+    <>
+    {/* navigation bar */}
+    <div>
+      <Navigation/>
+    </div>
+    {/* homepagestart */}
+    <Homepag/>
+    </>
   )
 }
 
