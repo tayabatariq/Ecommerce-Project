@@ -6,8 +6,14 @@ const Homepag = () => {
   return (
    <>
    <Maincarosa/>
-   <div>
+   <div className='flex w-full flex-col   '>
     <Homesectioncarosal/>
+    <Homesectioncarosal/>
+    <Homesectioncarosal/>
+    <Homesectioncarosal/>
+    <Homesectioncarosal/>
+    <Homesectioncarosal/>
+
    </div>
    </>
   )
