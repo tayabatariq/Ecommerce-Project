@@ -4,7 +4,7 @@ const HomesectionCrad = ({ product }) => {
   return (
     <>
       <div className="flex flex-col border border-gray-300 shadow-gray-500 justify-center items-center w-[12rem] rounded-lg shadow-lg bg-white mx-3 overflow-hidden">
-        <div className="h-[10rem] w-full ">
+        <div className="h-[12rem] w-full ">
           <img
             src={product.imageUrl}
             className="w-full h-full object-cover object-top "
