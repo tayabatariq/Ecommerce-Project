@@ -13,6 +13,13 @@ import {
   MenuItem,
   MenuItems,
 } from "@headlessui/react";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormControl from "@mui/material/FormControl";
+import FormLabel from "@mui/material/FormLabel";
+import FilterListIcon from '@mui/icons-material/FilterList';
+
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { Mens_kurta } from "../../../data/Mens_kurta";
 import {
@@ -24,56 +31,85 @@ import {
 } from "@heroicons/react/20/solid";
 import Productcard from "./Productcard";
 
-const sortOptions = [
-  { name: "Most Popular", href: "#", current: true },
-  { name: "Best Rating", href: "#", current: false },
-  { name: "Newest", href: "#", current: false },
-  { name: "Price: Low to High", href: "#", current: false },
-  { name: "Price: High to Low", href: "#", current: false },
+const color = [
+  "white",
+  "Black",
+  "Red",
+  "marun",
+  "Being",
+  "Pink",
+  "Green",
+  "Yellow",
 ];
-const subCategories = [
-  { name: "Totes", href: "#" },
-  { name: "Backpacks", href: "#" },
-  { name: "Travel Bags", href: "#" },
-  { name: "Hip Bags", href: "#" },
-  { name: "Laptop Sleeves", href: "#" },
-];
+
 const filters = [
   {
     id: "color",
     name: "Color",
     options: [
-      { value: "white", label: "White", checked: false },
-      { value: "beige", label: "Beige", checked: false },
-      { value: "blue", label: "Blue", checked: true },
-      { value: "brown", label: "Brown", checked: false },
-      { value: "green", label: "Green", checked: false },
-      { value: "purple", label: "Purple", checked: false },
+      { value: "white", label: "White" },
+      { value: "beige", label: "Beige" },
+      { value: "blue", label: "Blue" },
+      { value: "brown", label: "Brown" },
+      { value: "green", label: "Green" },
+      { value: "purple", label: "Purple" },
+      { value: "yellow", label: "Yellow" },
     ],
   },
-  {
-    id: "category",
-    name: "Category",
-    options: [
-      { value: "new-arrivals", label: "New Arrivals", checked: false },
-      { value: "sale", label: "Sale", checked: false },
-      { value: "travel", label: "Travel", checked: true },
-      { value: "organization", label: "Organization", checked: false },
-      { value: "accessories", label: "Accessories", checked: false },
-    ],
-  },
+
   {
     id: "size",
     name: "Size",
     options: [
-      { value: "2l", label: "2L", checked: false },
-      { value: "6l", label: "6L", checked: false },
-      { value: "12l", label: "12L", checked: false },
-      { value: "18l", label: "18L", checked: false },
-      { value: "20l", label: "20L", checked: false },
-      { value: "40l", label: "40L", checked: true },
+      { value: "S", label: "S" },
+      { value: "M", label: "M" },
+      { value: "L", label: "L" },
     ],
   },
+];
+
+const singleFilter = [
+  {
+    id: "price",
+    name: "Price",
+    options: [
+      { value: "159-399", label: "$159 To $399" },
+      { value: "399-999", label: "$399 To $999" },
+      { value: "999-1999", label: "$999 To $1999" },
+      { value: "1999-2999", label: "$1999 To $2999" },
+      { value: "3999-4999", label: "$3999 To $4999" },
+    ],
+  },
+  {
+    id: "discount",
+    name: "Discount range",
+    options: [
+      {
+        value: "10",
+        label: "10% And Above",
+      },
+      { value: "20", label: "20% And Above" },
+      { value: "30", label: "30% And Above" },
+      { value: "40", label: "40% And Above" },
+      { value: "50", label: "50% And Above" },
+      { value: "60", label: "60% And Above" },
+      { value: "70", label: "70% And Above" },
+      { value: "80", label: "80% And Above" },
+    ],
+  },
+  {
+    id: "stock",
+    name: "Availabliity",
+    options: [
+      { value: "in_stock", label: "In Stock" },
+      { value: "out_of_stock ", label: "Out Of Stock" },
+    ],
+  },
+];
+
+const sortOptions = [
+  { name: "Price:Low to High", query: "price_low", current: false },
+  { name: "Price:High to Low", query: "price_high", current: false },
 ];
 
 function classNames(...classes) {
@@ -118,13 +154,13 @@ export default function Product() {
               <form className="mt-4 border-t border-gray-200">
                 <h3 className="sr-only">Categories</h3>
                 <ul role="list" className="px-2 py-3 font-medium text-gray-900">
-                  {subCategories.map((category) => (
+                  {/* {subCategories.map((category) => (
                     <li key={category.name}>
                       <a href={category.href} className="block px-2 py-3">
                         {category.name}
                       </a>
                     </li>
-                  ))}
+                  ))} */}
                 </ul>
 
                 {filters.map((section) => (
@@ -268,19 +304,19 @@ export default function Product() {
             </h2>
 
             <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
-              {/* Filters */}
+              <div>
+                <div className="flex py-10 justify-between items-center opacity-40">
+              <h1 className="text-lg font-bold ">Filters</h1>
+              <FilterListIcon/>
+
+                </div>
               <form className="hidden lg:block">
+
                 <h3 className="sr-only">Categories</h3>
                 <ul
                   role="list"
                   className="space-y-4 border-b border-gray-200 pb-6 text-sm font-medium text-gray-900"
-                >
-                  {subCategories.map((category) => (
-                    <li key={category.name}>
-                      <a href={category.href}>{category.name}</a>
-                    </li>
-                  ))}
-                </ul>
+                ></ul>
 
                 {filters.map((section) => (
                   <Disclosure
@@ -353,14 +389,66 @@ export default function Product() {
                     </DisclosurePanel>
                   </Disclosure>
                 ))}
+
+                {singleFilter.map((section) => (
+                  <Disclosure
+                    key={section.id}
+                    as="div"
+                    className="border-b border-gray-200 py-6"
+                  >
+                   
+                   {({open})=>(
+                         <FormControl>
+
+                     <h3 className="-my-3 flow-root">
+
+                     <DisclosureButton className="group flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-gray-500">
+                       <span className="font-medium text-gray-900">
+                         {section.name}
+                       </span>
+                       <span className="ml-6 flex items-center">
+                         <PlusIcon
+                           aria-hidden="true"
+                           className="size-5 group-data-open:hidden"
+                         />
+                         <MinusIcon
+                           aria-hidden="true"
+                           className="size-5 group-not-data-open:hidden"
+                         />
+                       </span>
+                     </DisclosureButton>
+                   </h3>
+                   <DisclosurePanel className="pt-6">
+                     <div className="space-y-4">
+                     <RadioGroup 
+                     aria-labelledby="demo-radio-buttons-group-label"
+                     defaultValue="female"
+                     name="radio-buttons-group"
+                     >
+
+                       {section.options.map((option, optionIdx) => (
+                            <>
+                            <FormControlLabel value={option.id} control={<Radio/>} label={option.label}/>
+                            </>
+                       ))}
+                       </RadioGroup>
+
+                     </div>
+                   </DisclosurePanel>
+                   </FormControl>
+
+                   )}
+                  </Disclosure>
+                ))}
               </form>
+              </div>
 
               {/* Product grid */}
               <div className="lg:col-span-3 w-full">
                 <div className="flex flex-wrap justify-center bg-white py-5">
                   {/* {Mens_kurta.map((item)=><Productcard/>)} */}
                   {Mens_kurta.map((item, index) => (
-                    <Productcard key={index}  Product={item} />
+                    <Productcard key={index} Product={item} />
                   ))}
                 </div>
               </div>
