@@ -380,7 +380,7 @@ export default function Navigation() {
                   ) : (
                     <Button
                       onClick={handleOpen}
-                      className="text-sm font-medium text-gray-700 hover:text-gray-800"
+                      className="text-sm  font-medium text-gray-700 hover:text-gray-800"
                     >
                       Sign in
                     </Button>
