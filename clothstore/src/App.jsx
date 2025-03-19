@@ -19,7 +19,7 @@ const App = () => {
       {/* <Productdetail /> */}
       {/* <Cart/> */}
       <Routes>
-      <Route path="/checkout" element={<Checkout />} />
+      <Route path="/" element={<Checkout />} />
       {/* Other routes */}
     </Routes>
       {/* Footer */}

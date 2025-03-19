@@ -12,10 +12,10 @@ import Ordersummary from './Ordersummary';
 const steps = ['Login', 'Delevery Address', 'Order Summary', 'Payment'];
 
 export default function Checkout() {
-  const [activeStep, setActiveStep] = React.useState(0);
   const location = useLocation();
-  const querySeacrch = new URLSearchParams(location.search);
-  const step = querySeacrch.get("step");
+  const querySearch = new URLSearchParams(location.search);
+  const stepFromUrl = parseInt(querySearch.get("step") || "0", 10);
+  const [activeStep, setActiveStep] = React.useState(stepFromUrl);
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -27,9 +27,8 @@ export default function Checkout() {
 
   return (
     <div className='px-10 lg:px-20'>
-      wkms
       <Box sx={{ width: '100%' }}>
-        <Stepper activeStep={step}>
+        <Stepper activeStep={activeStep}>
           {steps.map((label) => (
             <Step key={label}>
               <StepLabel>{label}</StepLabel>
@@ -59,7 +58,8 @@ export default function Checkout() {
               </Button>
             </Box>
             <div>
-              {step == 2 ? <Adddelevery /> : <Ordersummary />}
+              {activeStep === 1 ? <Adddelevery /> : null}
+              {activeStep === 2 ? <Ordersummary /> : null}
             </div>
           </React.Fragment>
         )}
