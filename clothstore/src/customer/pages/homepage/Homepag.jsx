@@ -7,7 +7,7 @@ const Homepag = () => {
   return (
     <>
       <Maincarosa />
-      <div className='flex w-full flex-col'>
+      <div className='flex w-full relative z-1 flex-col'>
         <Homesectioncarosal data={Mens_kurta} sectionName={"Men's Kurta"}/>
         <Homesectioncarosal data={Mens_kurta} sectionName={"Men's shoes"}/>
         <Homesectioncarosal data={Mens_kurta} sectionName={"Men's shirts"} />

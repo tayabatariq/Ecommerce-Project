@@ -3,7 +3,7 @@ import React from "react";
 const HomesectionCrad = ({ product }) => {
   return (
     <>
-      <div className="flex flex-col border border-gray-300 shadow-gray-500 justify-center items-center w-[12rem] rounded-lg shadow-lg bg-white mx-3 overflow-hidden">
+      <div className="flex flex-col relative z-1 border border-gray-300 shadow-gray-500 justify-center items-center w-[12rem] rounded-lg shadow-lg bg-white mx-3 overflow-hidden">
         <div className="h-[12rem] w-full ">
           <img
             src={product.imageUrl}
