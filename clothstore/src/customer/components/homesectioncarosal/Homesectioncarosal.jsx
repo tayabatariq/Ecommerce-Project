@@ -42,7 +42,7 @@ const Homesectioncarosal = ({ data, sectionName }) => {
     : [];
 
   return (
-    <div className="relative px-4 lg:px-8">
+    <div  className="relative px-4 lg:px-8">
       <div className="relative mt-2 p-5">
         <h1 className="text-2xl font-extrabold py-5 text-gray-900">
           {sectionName}

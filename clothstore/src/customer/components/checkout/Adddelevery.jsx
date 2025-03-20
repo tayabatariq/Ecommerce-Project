@@ -7,18 +7,30 @@ const Adddelevery = () => {
     event.preventDefault();
     // Handle form submission here
     console.log('Form submitted');
+    const data=new  FormData(event.currentTarget)
+    const adress={
+      firstName:data.get("firstname"),
+      lastName:data.get("lastname"),
+      address:data.get("address"),
+      city:data.get("city"),
+      state:data.get("state"),
+      zip:data.get("zip"),
+      phone:data.get("phone")
+    }
+    console.log(adress)
   };
 
 
   return (
     <div>
-      <Grid container spacing={4}>
+      <Grid container spacing={4} className=" pt-10">
         <Grid
           xs={12}
+
           lg={5}
-          className="border rounded-md shadow-md h-[30.5rem] overflow-y-scroll"
+          className="border rounded-md mt-8 shadow-md h-[30.5rem] overflow-y-scroll"
         >
-          <div className="p-5 py-7 border-b cursor-pointer">
+          <div className="p-5 py-7 mt-[2rem] border-b cursor-pointer">
             <Adresscatr />
             <Button
               sx={{ mt: 2, bgcolor: "RGB(145 85 253)" }}
