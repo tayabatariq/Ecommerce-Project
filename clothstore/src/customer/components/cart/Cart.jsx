@@ -2,8 +2,13 @@ import React from "react";
 import Cartitem from "./Cartitem";
 import { Divider } from "@mui/material";
 import {  Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
+  const navigate = useNavigate()
+  const handlecheckout=()=>{
+    navigate("/checkout?step=1")
+  }
   return (
     <div>
       <div className="lg:grid grid-cols-3 lg:px-16 relative">
@@ -35,7 +40,7 @@ const Cart = () => {
                 </div>
 
             </div>
-            <Button className="w-full mt-5" sx={{bgcolor:"#9155fd",px:"2.5rem",py:".7rem",color:"white"}}> Check out</Button>
+            <Button onClick={handlecheckout} className="w-full mt-5" sx={{bgcolor:"#9155fd",px:"2.5rem",py:".7rem",color:"white"}}> Check out</Button>
         </div>
       </div>
       </div>

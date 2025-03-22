@@ -110,35 +110,7 @@ export const Mens_kurta=[
           "thirdLavelCategory": "mens_kurta",
           "description":"A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style."
     },
-    {
-        "imageUrl": "        <Adresscatr/>
-",
-        "brand": "PETER ENGLAND",
-        "title": "Men Woven Design Pure Cotton Straight Kurta",
-        "color": "Grey",
-        "discountedPrice": 524,
-        "price": 1049,
-        "discountPersent": 50,
-        "size": [
-            {
-              "name": "S",
-              "quantity": 20
-            },
-            {
-              "name": "M",
-              "quantity": 30
-            },
-            {
-              "name": "L",
-              "quantity": 50
-            }
-          ],
-          "quantity": 100,
-          "topLavelCategory": "Men",
-          "secondLavelCategory": "Clothing",
-          "thirdLavelCategory": "mens_kurta",
-          "description":"A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style."
-    },
+   
     {
         "imageUrl": "https://rukminim1.flixcart.com/image/612/612/xif0q/kurta/y/c/x/xl-kast107hp-majestic-man-original-imafw49u5uty4agx-bb.jpeg?q=70",
         "brand": "Majestic Man",
