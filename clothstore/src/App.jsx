@@ -17,7 +17,6 @@ const App = () => {
     <>
       <div>
         <div>
-          <Navigation/>
         </div>
         <Routes>
           <Route path="/" element={<CustomerRouters />}></Route>
@@ -37,7 +36,6 @@ const App = () => {
           
         </Routes>
       </div>
-      <Fotter/>
     </>
   );
 };
