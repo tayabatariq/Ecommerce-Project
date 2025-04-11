@@ -1,5 +1,6 @@
 const User = require("../models/user.model");
 const bcrypt = require("bcrypt");
+const jwtProvider=require("../config/jwtpovider.js")
 const createUser = async (userdata) => {
   try {
     let { firstNmae, lastName, email, password } = userdata;
@@ -18,16 +19,16 @@ const createUser = async (userdata) => {
 };
 const findUserById = async (userId) => {
   try {
-    const user = await User.findById(userId);
+    const user = await User.findById(userId).populate("address");
     if (!user) {
       throw new Error("user nor found with id :", userId);
       return user;
-    }
+    } 
   } catch (err) {
     throw new Error(err.message);
   }
 };
-const findUserByEmail = async (email) => {
+const getUserByEmail = async (email) => {
   try {
     const user = await User.findOne(email);
     if (!user) {
@@ -41,8 +42,23 @@ const findUserByEmail = async (email) => {
 const getUserProfileByToken=async (token)=>{
     try{
 
+      const userId=jwtProvider.getUserIdFromToken(token)
+      const user=await findUserById(userId)
+      if(!user){
+        throw new Error("user nor found with id :", userId);
+        return user;
+      }
     }catch(err){
-
+  throw new Error(err.message)
     }
 }
-module.exports = { createUser, findUserByEmail, findUserById };
+
+const getAllUsers=async()=>{
+try{
+const users=await User.find()
+return users
+}catch(err){
+  throw new Error(err.message)
+}
+}
+module.exports = { createUser, getUserByEmail, findUserById,getUserProfileByToken,getAllUsers };
