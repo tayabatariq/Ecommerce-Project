@@ -13,5 +13,5 @@ app.get("/",(req,res)=>{
 })
 
 app.use("/auth",authrouter)
+app.use("/api/users",userRouters)
 module.exports=app;
-app.use("/users",userRouters)

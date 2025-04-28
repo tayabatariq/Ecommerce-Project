@@ -1,4 +1,4 @@
-const app = require(".");
+const app = require("./index");
 const { connectDB } = require("./config/db");
 const PORT=8000
 app.listen(PORT,async()=>{
