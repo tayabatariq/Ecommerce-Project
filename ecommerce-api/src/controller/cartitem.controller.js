@@ -1,4 +1,4 @@
-const cartItemService=require("../services/cartItem.service.js");
+const cartItemService=require("../services/cartitemservices");
 
 const updateCartItem=async(req,res)=>{
     const user=req.user
