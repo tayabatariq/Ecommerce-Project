@@ -1,6 +1,4 @@
-const cartService=require(
-    "../services/cart.service"
-)
+const cartService=require('../services/cart.service.js')
 const Address=require("../models/adress.model") 
 const Order=require("../models/order.model");
 const { populate } = require("../models/user.model");

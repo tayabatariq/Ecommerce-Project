@@ -7,6 +7,6 @@ const productController=require("../controller/productcontroller.js")
 
 
 router.get('/',authenticate,productController.getAllProducts)
-router.get("/id/:id",authenticate,productController.findproductbyid)
+router.get("/id/:id",authenticate,productController.findProductById)
 
 module.exports=router

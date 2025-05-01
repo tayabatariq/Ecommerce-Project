@@ -1,8 +1,8 @@
-const orderService = require("../services/orderService.js");
+const orderService = require("../services/orderservices.js");
 
-const getAllOrders = async (req, res) => {
+const getAllOrder = async (req, res) => {
   try {
-    const orders = await orderService.getAllOrders();
+    const orders = await orderService.getAllOrder();
     return res.status(200).send(orders);
   } catch (error) {
     return res.status(500).send({ error: error.message });
@@ -10,11 +10,11 @@ const getAllOrders = async (req, res) => {
 };
 
 
-const confirmOrders = async (req, res) => {
+const confirmOrder = async (req, res) => {
     const orderId=req.params.orderId
 
     try {
-      const orders = await orderService.confirmOrders(orderId);
+      const orders = await orderService.confirmOrder(orderId);
       return res.status(200).send(orders);
     } catch (error) {
       return res.status(500).send({ error: error.message });
@@ -48,6 +48,7 @@ const confirmOrders = async (req, res) => {
 
 
   const canceledOrders = async (req, res) => {
+
     const orderId=req.params.orderId
 
     try {
@@ -70,4 +71,4 @@ const confirmOrders = async (req, res) => {
     }
   };
 
-  module.exports={deleteOrders,canceledOrders,deliverOrders,shippOrders,confirmOrders,getAllOrders}
+  module.exports={deleteOrders,canceledOrders,deliverOrders,shippOrders,confirmOrder,getAllOrder}

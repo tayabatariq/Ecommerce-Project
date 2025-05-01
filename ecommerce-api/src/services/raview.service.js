@@ -1,5 +1,5 @@
 const Review = require("../models/review.js");
-const productService = require("../services/product.service.js");
+const productService = require("../services/productservices.js");
 
 async function createReview(reqData, user) {
   const product = await productService.findProductById(reqData.productId);

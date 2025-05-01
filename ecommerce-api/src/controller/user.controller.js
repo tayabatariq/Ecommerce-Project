@@ -2,10 +2,14 @@ const userServices = require("../services/userservice.js");
 
 const getUserProfile = async (req, res) => {
   try {
-    const jwt = req.headers.authorization?.split(" ")[1];
-console.log(jwt)
+    const authHeader = req.headers.authorization;
+    console.log("Authorization Header:", authHeader);
+
+    const jwt = authHeader?.split(" ")[1];
+    console.log("Extracted Token:", jwt);
+
     if (!jwt) {
-      return res.status(404).send({ error: "token message found" });
+      return res.status(401).send({ error: "Token not found in request" });
     }
 
     const user = await userServices.getUserProfileByToken(jwt);
@@ -17,10 +21,10 @@ console.log(jwt)
 
 const getAllUsers = async (req, res) => {
   try {
-    const users = userServices.getAllUsers();
+    const users = await userServices.getAllUsers(); // added await
     return res.send(users);
   } catch (err) {
-    return res.status(500).send({ error: error.message });
+    return res.status(500).send({ error: err.message });
   }
 };
 
