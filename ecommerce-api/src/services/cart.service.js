@@ -11,32 +11,38 @@ catch(err){
     throw new Error(err.message)
 }
 }
+const CartItem = require("../models/cartItem.model"); // correct this path
 
-async function findUserCart(userId){
-    try{
-        let cart=await Cart.findOne({user:user})
-        let cartItems=await CartItem.find({cart:cart._id}).populate("product")
+async function findUserCart(userId) {
+    try {
+        let cart = await Cart.findOne({ user: userId });
+        if (!cart) throw new Error("Cart not found");
 
-        cart.cartItems=cartItems;
-        let totalPrice=0;
-        let totalDiscountedPrice=0;
-        let totalItem=0;
+        const cartItems = await CartItem.find({ cart: cart._id }).populate("product");
 
-        for(let cartItem of cart.cartItems){
-            totalPrice+=cartItem.price
-            totalDiscountedPrice+=cartItem.discountedPrice;
-            totalItem+=cartItem.quantity
+        cart = cart.toObject(); // Convert Mongoose document to plain object
+        cart.cartItems = cartItems;
 
+        let totalPrice = 0;
+        let totalDiscountedPrice = 0;
+        let totalItem = 0;
+
+        for (let item of cartItems) {
+            totalPrice += item.price;
+            totalDiscountedPrice += item.discountedPrice;
+            totalItem += item.quantity;
         }
-        cart.totalPrice=totalPrice;
-        cart.totalItem=totalItem
-        cart.discount=totalPrice-totalDiscountedPrice
-        return cart
-    }catch(err){
-        throw new Error(err.message)
-    }
 
+        cart.totalPrice = totalPrice;
+        cart.totalItem = totalItem;
+        cart.discount = totalPrice - totalDiscountedPrice;
+
+        return cart;
+    } catch (err) {
+        throw new Error(err.message);
+    }
 }
+
 
 async function addCartItem(userId,req){
     try{
